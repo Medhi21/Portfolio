@@ -1,4 +1,4 @@
-f<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -30,6 +30,7 @@ body {
   font-size: 16px;
 }
 
+/* NAV */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -92,6 +93,7 @@ nav {
   border-radius: 2px;
 }
 
+/* LAYOUT */
 main {
   max-width: 740px;
   margin: 0 auto;
@@ -152,6 +154,7 @@ p {
 
 p:last-child { margin-bottom: 0; }
 
+/* HERO */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -199,6 +202,7 @@ p:last-child { margin-bottom: 0; }
 .btn-ghost { background: transparent; color: var(--muted); border-color: var(--border); }
 .btn-ghost:hover { border-color: var(--green); color: var(--green); }
 
+/* TIMELINE */
 .tl-item {
   display: grid;
   grid-template-columns: 110px 1fr;
@@ -220,6 +224,7 @@ p:last-child { margin-bottom: 0; }
 .tl-content h3 { margin-bottom: 0.25rem; }
 .tl-content p { font-size: 0.9rem; margin-bottom: 0.5rem; }
 
+/* TAGS */
 .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
 
 .tag {
@@ -232,6 +237,7 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: 0.03em;
 }
 
+/* COMPETENCES */
 .skills-table { width: 100%; border-collapse: collapse; }
 
 .skills-table tr { border-bottom: 1px solid var(--border); }
@@ -256,6 +262,7 @@ p:last-child { margin-bottom: 0; }
 
 .skills-table td:last-child { color: var(--muted); line-height: 1.8; }
 
+/* PROJETS */
 .project {
   border-bottom: 1px solid var(--border);
   padding: 2rem 0;
@@ -302,6 +309,7 @@ p:last-child { margin-bottom: 0; }
 
 .pg-block p { font-size: 0.88rem; margin: 0; }
 
+/* STAGE */
 .stage-block {
   padding: 2rem 0;
   border-bottom: 1px solid var(--border);
@@ -385,8 +393,28 @@ p:last-child { margin-bottom: 0; }
   margin-bottom: 0.3rem;
 }
 
-.veille-item h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+.veille-item h3 { 
+  font-size: 1.05rem; 
+  margin-bottom: 0.5rem; 
+}
 
+.veille-item p {
+  font-size: 0.93rem;
+  margin-bottom: 0.9rem;
+}
+
+.veille-link {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--green);
+  text-decoration: none;
+}
+
+.veille-link:hover {
+  text-decoration: underline;
+}
+
+/* CV PDF */
 .cv-upload-zone {
   border: 1px dashed var(--border);
   border-radius: 8px;
@@ -479,16 +507,8 @@ p:last-child { margin-bottom: 0; }
 }
 
 .cv-btn:hover { border-color: var(--green); color: var(--green); }
-.cv-btn.danger:hover { border-color: #c0392b; color: #c0392b; }
 
-.cv-embed {
-  width: 100%;
-  height: 700px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-}
-
-
+/* CONTACT */
 .contact-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
 
 .contact-line {
@@ -517,6 +537,7 @@ p:last-child { margin-bottom: 0; }
 
 .contact-line-value { font-size: 0.93rem; color: var(--text); }
 
+/* RESPONSIVE */
 @media (max-width: 720px) {
   .nav-links { display: none; }
   .nav-links.open {
@@ -548,7 +569,9 @@ p:last-child { margin-bottom: 0; }
     <li><a href="#competences">Compétences</a></li>
     <li><a href="#projets">Projets</a></li>
     <li><a href="#stage">Stage</a></li>
+    <li><a href="#veille">Veille</a></li>
     <li><a href="#cv">CV</a></li>
+    <li><a href="#ts">Tableau de synthèse</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="Menu">
@@ -558,6 +581,7 @@ p:last-child { margin-bottom: 0; }
 
 <main>
 
+  <!-- PRÉSENTATION -->
   <section id="presentation">
     <div class="badge"><span class="badge-dot"></span>Disponible pour alternance</div>
     <h1>Medhi<br><em>Rodrigues</em></h1>
@@ -572,6 +596,7 @@ p:last-child { margin-bottom: 0; }
     </div>
   </section>
 
+  <!-- PARCOURS -->
   <section id="parcours">
     <div class="s-label">Parcours</div>
     <h2>Mon parcours</h2>
@@ -616,6 +641,7 @@ p:last-child { margin-bottom: 0; }
 
   </section>
 
+  <!-- COMPÉTENCES -->
   <section id="competences">
     <div class="s-label">Compétences</div>
     <h2>Ce que je sais faire</h2>
@@ -643,6 +669,7 @@ p:last-child { margin-bottom: 0; }
     </table>
   </section>
 
+  <!-- PROJETS -->
   <section id="projets">
     <div class="s-label">Projets</div>
     <h2>Projets réalisés</h2>
@@ -712,6 +739,7 @@ p:last-child { margin-bottom: 0; }
 
   </section>
 
+  <!-- STAGE -->
   <section id="stage">
     <div class="s-label">Stage</div>
     <h2>Expériences en entreprise</h2>
@@ -773,6 +801,7 @@ p:last-child { margin-bottom: 0; }
           <p>Créer un site WordPress de A à Z sans plugin existant, développer et sécuriser des plugins personnalisés, livrer à un vrai client.</p>
         </div>
       </div>
+      <div class="bilan">Bilan : ce stage m'a permis de mieux comprendre le développement WordPress et les possibilités qu'offre la création de plugins sur mesure.</div>
       <div class="photos-label" style="margin-top:1.2rem">Photos / captures</div>
       <div class="stage-photos">
         <img src="stage2-1.jpg" alt="Stage 2 - photo 1" class="stage-img">
@@ -782,6 +811,29 @@ p:last-child { margin-bottom: 0; }
 
   </section>
 
+  <!-- VEILLE TECHNOLOGIQUE -->
+  <section id="veille">
+    <div class="s-label">Veille technologique</div>
+    <h2>Ma veille techno</h2>
+    <p style="margin-bottom: 2.5rem;">Je suis régulièrement les évolutions dans les domaines de la cybersécurité et des infrastructures cloud/IA.</p>
+
+    <div class="veille-item">
+      <div class="veille-cat">Avril 2026</div>
+      <h3>Cyberattaques : 80 % des entreprises françaises admettent ne pas être prêtes alors que la menace s’industrialise</h3>
+      <p>Selon une étude récente, une grande majorité des entreprises françaises reconnaissent un manque de préparation face à la montée en puissance des cyberattaques industrialisées. Cela souligne l’importance d’investir dans la formation et les solutions de défense.</p>
+      <a href="https://www.usine-digitale.fr/cybersecurite/cyberattaques-80-des-entreprises-francaises-admettent-ne-pas-etre-pretes-alors-que-la-menace-sindustrialise.B6LX43PRANAH7K4LYBFQG437WQ.html" target="_blank" class="veille-link">Lire l’article complet →</a>
+    </div>
+
+    <div class="veille-item">
+      <div class="veille-cat">Avril 2026</div>
+      <h3>Entre 45 et 50 milliards de dollars levés en 2026 : Oracle met les bouchées doubles sur les infrastructures IA</h3>
+      <p>Oracle annonce un investissement massif entre 45 et 50 milliards de dollars en 2026 pour renforcer ses infrastructures cloud dédiées à l’intelligence artificielle, confirmant sa volonté de devenir un acteur majeur dans ce domaine.</p>
+      <a href="https://www.usine-digitale.fr/informatique/oracle/entre-45-et-50-milliards-de-dollars-leves-en-2026-oracle-met-les-bouchees-doubles-sur-les-infrastructures-ia.GGAHBHNXIFBNTOMVTBS3ESKYUA.html" target="_blank" class="veille-link">Lire l’article complet →</a>
+    </div>
+
+  </section>
+
+  <!-- CV -->
   <section id="cv">
     <div class="s-label">Curriculum Vitae</div>
     <h2>CV</h2>
@@ -796,14 +848,29 @@ p:last-child { margin-bottom: 0; }
 
   </section>
 
+  <section id="ts">
+    <div class="s-label">Tableau de synthèse</div>
+    <h2>Tableau de synthèse</h2>
+
+    <div class="cv-viewer-toolbar">
+      <span class="cv-filename">Tableau_synthese_medhi.pdf</span>
+      <div class="cv-toolbar-actions">
+        <a class="cv-btn" href="ts_medhi.pdf" download="CV_Medhi_Rodrigues.pdf">Télécharger</a>
+      </div>
+    </div>
+    <iframe class="cv-embed" src="ts_medhi.pdf" title="TS Medhi Rodrigues"></iframe>
+
+  </section>
+
+  <!-- CONTACT -->
   <section id="contact">
     <div class="s-label">Contact</div>
     <h2>Me contacter</h2>
     <p>N'hésitez pas à me contacter pour toute question sur mon parcours ou une opportunité d'alternance.</p>
     <div class="contact-list">
-      <a href="mailto:medhi.rodrigues@email.com" class="contact-line">
+      <a href="mailto:m.rodrigues71230@gmail.com" class="contact-line">
         <span class="contact-line-label">Email</span>
-        <span class="contact-line-value">medhi.rodrigues71230@gmail.com</span>
+        <span class="contact-line-value">m.rodrigues71230@gmail.com</span>
       </a>
       <div class="contact-line">
         <span class="contact-line-label">Téléphone</span>
@@ -818,15 +885,7 @@ p:last-child { margin-bottom: 0; }
   const sections = document.querySelectorAll('section[id]');
   const links = document.querySelectorAll('.nav-links a');
 
-  new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        links.forEach(l => l.classList.remove('active'));
-        const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-        if (a) a.classList.add('active');
-      }
-    });
-  }, { threshold: 0.25 }).observe && sections.forEach(s =>
+  sections.forEach(s => {
     new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -835,8 +894,8 @@ p:last-child { margin-bottom: 0; }
           if (a) a.classList.add('active');
         }
       });
-    }, { threshold: 0.25 }).observe(s)
-  );
+    }, { threshold: 0.25 }).observe(s);
+  });
 
   document.getElementById('navToggle').addEventListener('click', () => {
     document.getElementById('navLinks').classList.toggle('open');
@@ -845,7 +904,6 @@ p:last-child { margin-bottom: 0; }
   links.forEach(l => l.addEventListener('click', () => {
     document.getElementById('navLinks').classList.remove('open');
   }));
-
 </script>
 </body>
 </html>
