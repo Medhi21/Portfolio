@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Medhi Rodrigues — Portfolio BTS SIO SLAM</title>
+<title>Medhi Rodrigues - Portfolio BTS SIO SLAM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;400;500;600;700&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -309,6 +309,28 @@ p:last-child { margin-bottom: 0; }
 
 .pg-block p { font-size: 0.88rem; margin: 0; }
 
+/* PHOTOS PROJETS */
+.project-photos-section {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+.photos-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.project-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
 /* STAGE */
 .stage-block {
   padding: 2rem 0;
@@ -347,24 +369,25 @@ p:last-child { margin-bottom: 0; }
 
 .sd-block p { font-size: 0.88rem; margin: 0; }
 
-.photos-label {
-  font-family: 'Geist Mono', monospace;
-  font-size: 0.62rem;
-  color: var(--dim);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
-}
-
 .stage-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
 
-.stage-img {
+/* IMAGE CLIQUABLE */
+.stage-img,
+.project-img {
   width: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 6px;
   border: 1px solid var(--border);
   display: block;
+  cursor: zoom-in;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.stage-img:hover,
+.project-img:hover {
+  opacity: 0.88;
+  transform: scale(1.01);
 }
 
 .bilan {
@@ -410,103 +433,73 @@ p:last-child { margin-bottom: 0; }
   text-decoration: none;
 }
 
-.veille-link:hover {
-  text-decoration: underline;
-}
+.veille-link:hover { text-decoration: underline; }
 
-/* CV PDF */
-.cv-upload-zone {
-  border: 1px dashed var(--border);
+/* CV / TS */
+.doc-wrapper {
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--green-light);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 2.5rem;
-  cursor: pointer;
-  position: relative;
-  transition: border-color 0.15s;
-  text-align: center;
+  overflow: hidden;
+  background: var(--white);
 }
 
-.cv-upload-zone:hover { border-color: var(--green); }
-
-.cv-upload-zone input[type="file"] {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-  width: 100%; height: 100%;
-}
-
-.cv-upload-zone svg {
-  width: 28px; height: 28px;
-  stroke: var(--green);
-  stroke-width: 1.5;
-  fill: none;
-  pointer-events: none;
-}
-
-.cv-upload-zone-text {
-  pointer-events: none;
-}
-
-.cv-upload-zone-text strong {
-  display: block;
-  font-size: 0.93rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 0.15rem;
-}
-
-.cv-upload-zone-text span {
-  font-family: 'Geist Mono', monospace;
-  font-size: 0.62rem;
-  color: var(--dim);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.cv-viewer { display: none; }
-.cv-viewer.active { display: block; }
-
-.cv-viewer-toolbar {
+.doc-toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem 0;
-  margin-bottom: 0.8rem;
+  padding: 0.7rem 1rem;
   border-bottom: 1px solid var(--border);
+  background: var(--green-light);
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.cv-filename {
+.doc-filename {
   font-family: 'Geist Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: var(--muted);
   letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.cv-toolbar-actions { display: flex; gap: 0.5rem; }
+.doc-filename::before {
+  content: '';
+  display: inline-block;
+  width: 10px; height: 12px;
+  background: var(--green);
+  clip-path: polygon(0 0, 70% 0, 100% 30%, 100% 100%, 0 100%);
+  flex-shrink: 0;
+}
 
-.cv-btn {
+.doc-btn {
   font-family: 'Geist Mono', monospace;
   font-size: 0.67rem;
   letter-spacing: 0.04em;
-  padding: 0.4rem 0.9rem;
+  padding: 0.4rem 1rem;
   border-radius: 4px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--green-mid);
   background: var(--white);
-  color: var(--muted);
+  color: var(--green);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.15s;
+  font-weight: 500;
 }
 
-.cv-btn:hover { border-color: var(--green); color: var(--green); }
+.doc-btn:hover {
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
+}
+
+.doc-embed {
+  display: block;
+  width: 100%;
+  height: 780px;
+  border: none;
+}
 
 /* CONTACT */
 .contact-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
@@ -537,6 +530,77 @@ p:last-child { margin-bottom: 0; }
 
 .contact-line-value { font-size: 0.93rem; color: var(--text); }
 
+/* ===================== LIGHTBOX ===================== */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(10, 16, 10, 0.92);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: zoom-out;
+}
+
+#lightbox.open {
+  display: flex;
+}
+
+#lightbox-img {
+  max-width: 90vw;
+  max-height: 88vh;
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  object-fit: contain;
+  cursor: default;
+  animation: lb-in 0.2s ease;
+}
+
+@keyframes lb-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 1.2rem; right: 1.4rem;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  line-height: 1;
+}
+
+.veille-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 1rem 0;
+}
+
+.veille-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+#lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
 /* RESPONSIVE */
 @media (max-width: 720px) {
   .nav-links { display: none; }
@@ -552,14 +616,22 @@ p:last-child { margin-bottom: 0; }
   .nav-toggle { display: flex; }
   .tl-item { grid-template-columns: 1fr; gap: 0.3rem; }
   .project-grid { grid-template-columns: 1fr; }
+  .project-photos { grid-template-columns: 1fr; }
   .stage-details { grid-template-columns: 1fr; }
   .stage-photos { grid-template-columns: 1fr; }
   .skills-table td:first-child { width: 110px; font-size: 0.6rem; }
   main { padding: 4.5rem 1.2rem 4rem; }
+  .doc-embed { height: 500px; }
 }
 </style>
 </head>
 <body>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image agrandie">
+  <button id="lightbox-close" aria-label="Fermer">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <nav>
   <div class="nav-name">Medhi <span>Rodrigues</span></div>
@@ -587,7 +659,7 @@ p:last-child { margin-bottom: 0; }
     <h1>Medhi<br><em>Rodrigues</em></h1>
     <div class="hero-body">
       <p>Étudiant en 2ème année de BTS SIO option SLAM au lycée le Castel, à Dijon. Je me forme au développement logiciel : applications web, bases de données, applications métier.</p>
-      <p>J'aime comprendre comment les choses fonctionnent côté code — que ce soit une requête SQL, une page web ou un algorithme. Je préfère produire quelque chose qui marche vraiment plutôt qu'une belle démo qui s'effondre en production.</p>
+      <p>J’apprécie le processus de création d’une application, de l’idée jusqu’à sa réalisation. J’aime développer des projets qui sont le résultat de ma réflexion et de mes choix.</p>
     </div>
     <div class="hero-ctas">
       <a href="#projets" class="btn btn-solid">Voir mes projets</a>
@@ -602,42 +674,48 @@ p:last-child { margin-bottom: 0; }
     <h2>Mon parcours</h2>
 
     <div class="tl-item">
-      <div class="tl-date">2024 — 2026</div>
+      <div class="tl-date">2024 - 2026</div>
       <div class="tl-content">
-        <h3>BTS SIO — option SLAM</h3>
-        <p>Lycée le Castel, Dijon — En cours. Formation en développement d'applications, bases de données et gestion de projets informatiques.</p>
+        <h3>BTS SIO option SLAM</h3>
+        <p>Lycée le Castel, Dijon - En cours. Formation en développement d'applications, bases de données et gestion de projets informatiques.</p>
         <div class="tags">
           <span class="tag">PHP</span><span class="tag">Python</span><span class="tag">Laravel</span>
           <span class="tag">Kotlin</span><span class="tag">SQL</span><span class="tag">Java</span>
           <span class="tag">Jakarta EE</span><span class="tag">JavaScript</span>
           <span class="tag">HTML/CSS</span><span class="tag">UML</span>
+          <span class="tag">MongoDB</span>
+
         </div>
       </div>
     </div>
 
+
     <div class="tl-item">
-      <div class="tl-date">2022 — 2023</div>
+      <div class="tl-date">Février 2026</div>
       <div class="tl-content">
-        <h3>Terminale — Bac général</h3>
+        <h3>Stage 2ème année</h3>
+        <p>Association Bourguignonne Talents Sans Frontières, Dijon - 5 semaines. Création d'un site internet pour un musée avec système de quiz intégré.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">Juin 2025</div>
+      <div class="tl-content">
+        <h3>Stage 1ère année</h3>
+        <p>Pôle de Compétences Logiciels Libres, Dijon - 5 semaines. Création d'une application web de filtrage DNS au sein d'une équipe de développeurs.</p>
+      </div>
+    </div>
+
+
+    <div class="tl-item">
+      <div class="tl-date">2022 - 2023</div>
+      <div class="tl-content">
+        <h3>Terminale - Bac général</h3>
         <p>Lycée Henri Parriat, Montceau-les-Mines.</p>
       </div>
     </div>
 
-    <div class="tl-item">
-      <div class="tl-date">Mai 2024</div>
-      <div class="tl-content">
-        <h3>Stage 1ère année</h3>
-        <p>Pôle de Compétences Logiciels Libres, Dijon — 5 semaines. Création d'une application web de filtrage DNS au sein d'une équipe de développeurs.</p>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-date">Fév. 2026</div>
-      <div class="tl-content">
-        <h3>Stage 2ème année</h3>
-        <p>Association Bourguignonne Talents Sans Frontières, Dijon — 5 semaines. Création d'un site internet pour un musée avec système de quiz intégré.</p>
-      </div>
-    </div>
+    
 
   </section>
 
@@ -703,6 +781,13 @@ p:last-child { margin-bottom: 0; }
           <p>Maîtriser le fonctionnement de Jakarta EE, travailler en duo avec Git, gérer proprement les sessions.</p>
         </div>
       </div>
+      <div class="project-photos-section">
+        <div class="photos-label">Captures d'écran</div>
+        <div class="project-photos">
+          <img src="projet1-1.jpg" alt="Projet caserne - capture 1" class="project-img" data-lightbox>
+          <img src="projet1-2.jpg" alt="Projet caserne - capture 2" class="project-img" data-lightbox>
+        </div>
+      </div>
     </div>
 
     <div class="project">
@@ -735,6 +820,13 @@ p:last-child { margin-bottom: 0; }
           <p>Synchronisation d'une base SQLite locale avec un serveur distant. Création d'une application mobile Android de A à Z.</p>
         </div>
       </div>
+      <div class="project-photos-section">
+        <div class="photos-label">Captures d'écran</div>
+        <div class="project-photos">
+          <img src="projet2-1.jpg" alt="Projet bûcherons - capture 1" class="project-img" data-lightbox>
+          <img src="projet2-2.jpg" alt="Projet bûcherons - capture 2" class="project-img" data-lightbox>
+        </div>
+      </div>
     </div>
 
   </section>
@@ -746,7 +838,7 @@ p:last-child { margin-bottom: 0; }
 
     <div class="stage-block">
       <div class="stage-meta">Stage 1ère année · Mai 2024</div>
-      <h3>Pôle de Compétences Logiciels Libres — Dijon</h3>
+      <h3>Pôle de Compétences Logiciels Libres - Dijon</h3>
       <p>Secteur public · 5 semaines · Tuteur : Klass Tjebb</p>
       <div class="stage-details">
         <div class="sd-block">
@@ -771,14 +863,14 @@ p:last-child { margin-bottom: 0; }
       </div>
       <div class="photos-label">Photos / captures</div>
       <div class="stage-photos">
-        <img src="stage1-1.jpg" alt="Stage 1 - photo 1" class="stage-img">
-        <img src="stage1-2.jpg" alt="Stage 1 - photo 2" class="stage-img">
+        <img src="stage1-1.jpg" alt="Stage 1 - photo 1" class="stage-img" data-lightbox>
+        <img src="stage1-2.jpg" alt="Stage 1 - photo 2" class="stage-img" data-lightbox>
       </div>
     </div>
 
     <div class="stage-block">
       <div class="stage-meta">Stage 2ème année · Février–Mars 2026</div>
-      <h3>Association Bourguignonne Talents Sans Frontières — Dijon</h3>
+      <h3>Association Bourguignonne Talents Sans Frontières - Dijon</h3>
       <p>Secteur associatif · 5 semaines · Tuteur : Francis Contat</p>
       <div class="stage-details">
         <div class="sd-block">
@@ -804,62 +896,74 @@ p:last-child { margin-bottom: 0; }
       <div class="bilan">Bilan : ce stage m'a permis de mieux comprendre le développement WordPress et les possibilités qu'offre la création de plugins sur mesure.</div>
       <div class="photos-label" style="margin-top:1.2rem">Photos / captures</div>
       <div class="stage-photos">
-        <img src="stage2-1.jpg" alt="Stage 2 - photo 1" class="stage-img">
-        <img src="stage2-2.jpg" alt="Stage 2 - photo 2" class="stage-img">
+        <img src="stage2-1.jpg" alt="Stage 2 - photo 1" class="stage-img" data-lightbox>
+        <img src="stage2-2.jpg" alt="Stage 2 - photo 2" class="stage-img" data-lightbox>
       </div>
     </div>
 
   </section>
 
-  <!-- VEILLE TECHNOLOGIQUE -->
-  <section id="veille">
+<section id="veille">
     <div class="s-label">Veille technologique</div>
     <h2>Ma veille techno</h2>
-    <p style="margin-bottom: 2.5rem;">Je suis régulièrement les évolutions dans les domaines de la cybersécurité et des infrastructures cloud/IA.</p>
-
+    <p style="margin-bottom: 2.5rem;">Je suis régulièrement les évolutions dans les domaines de la cybersécurité et des infrastructures, notamment via des podcast spécialisées et des articles de presse.</p>
+ 
+    <div class="veille-item">
+      <div class="veille-cat">Chaîne YouTube — Informatique & Dev</div>
+      <h3>Underscore - vulgarisation tech et cybersécurité</h3>
+      <p>Je suis la chaîne Underscore pour rester informé sur des sujets comme la cybersécurité, le développement et les actualités tech. Les vidéos sont accessibles et bien documentées, idéales pour une veille régulière.</p>
+      <div class="veille-video">
+        <iframe
+          src="https://www.youtube.com/watch?v=s5oHvfFUsbE"
+          title="Underscore - exemple de vidéo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe> 
+      </div>
+      <a href="https://www.youtube.com/@Micode" target="_blank" class="veille-link">Voir la chaîne Micode →</a>
+    </div>
+ 
     <div class="veille-item">
       <div class="veille-cat">Avril 2026</div>
-      <h3>Cyberattaques : 80 % des entreprises françaises admettent ne pas être prêtes alors que la menace s’industrialise</h3>
-      <p>Selon une étude récente, une grande majorité des entreprises françaises reconnaissent un manque de préparation face à la montée en puissance des cyberattaques industrialisées. Cela souligne l’importance d’investir dans la formation et les solutions de défense.</p>
-      <a href="https://www.usine-digitale.fr/cybersecurite/cyberattaques-80-des-entreprises-francaises-admettent-ne-pas-etre-pretes-alors-que-la-menace-sindustrialise.B6LX43PRANAH7K4LYBFQG437WQ.html" target="_blank" class="veille-link">Lire l’article complet →</a>
+      <h3>Cyberattaques : 80 % des entreprises françaises admettent ne pas être prêtes alors que la menace s'industrialise</h3>
+      <p>Selon une étude récente, une grande majorité des entreprises françaises reconnaissent un manque de préparation face à la montée en puissance des cyberattaques industrialisées. Cela souligne l'importance d'investir dans la formation et les solutions de défense.</p>
+      <a href="https://www.usine-digitale.fr/cybersecurite/cyberattaques-80-des-entreprises-francaises-admettent-ne-pas-etre-pretes-alors-que-la-menace-sindustrialise.B6LX43PRANAH7K4LYBFQG437WQ.html" target="_blank" class="veille-link">Lire l'article complet →</a>
     </div>
-
+ 
     <div class="veille-item">
       <div class="veille-cat">Avril 2026</div>
-      <h3>Entre 45 et 50 milliards de dollars levés en 2026 : Oracle met les bouchées doubles sur les infrastructures IA</h3>
-      <p>Oracle annonce un investissement massif entre 45 et 50 milliards de dollars en 2026 pour renforcer ses infrastructures cloud dédiées à l’intelligence artificielle, confirmant sa volonté de devenir un acteur majeur dans ce domaine.</p>
-      <a href="https://www.usine-digitale.fr/informatique/oracle/entre-45-et-50-milliards-de-dollars-leves-en-2026-oracle-met-les-bouchees-doubles-sur-les-infrastructures-ia.GGAHBHNXIFBNTOMVTBS3ESKYUA.html" target="_blank" class="veille-link">Lire l’article complet →</a>
+      <h3>[IA Insider] Et si la France avançait enfin sur le sujet des data centers ?</h3>
+      <p>L’État français découvre (enfin) que les data centers ne vont pas se construire tout seuls : à Bercy, on planche donc sur un arsenal pour accélérer les implantations, sécuriser les investissements et surtout lever les blocages très terre-à-terre</p>
+      <a href="https://www.usine-digitale.fr/intelligence-artificielle/le-recap-ia/ia-insider-et-si-la-france-avancait-enfin-sur-le-sujet-des-data-centers.WWDIO7NXOFDHXF3YQ42RWRGCLU.html" target="_blank" class="veille-link">Lire l'article complet →</a>
     </div>
-
+ 
   </section>
 
   <!-- CV -->
   <section id="cv">
     <div class="s-label">Curriculum Vitae</div>
     <h2>CV</h2>
-
-    <div class="cv-viewer-toolbar">
-      <span class="cv-filename">CV_Medhi_Rodrigues.pdf</span>
-      <div class="cv-toolbar-actions">
-        <a class="cv-btn" href="cv.pdf" download="CV_Medhi_Rodrigues.pdf">Télécharger</a>
+    <div class="doc-wrapper">
+      <div class="doc-toolbar">
+        <span class="doc-filename">CV_Medhi_Rodrigues.pdf</span>
+        <a class="doc-btn" href="cv.pdf" download="CV_Medhi_Rodrigues.pdf">⬇ Télécharger</a>
       </div>
+      <iframe class="doc-embed" src="cv.pdf" title="CV Medhi Rodrigues"></iframe>
     </div>
-    <iframe class="cv-embed" src="cv.pdf" title="CV Medhi Rodrigues"></iframe>
-
   </section>
 
+  <!-- TABLEAU DE SYNTHÈSE -->
   <section id="ts">
     <div class="s-label">Tableau de synthèse</div>
     <h2>Tableau de synthèse</h2>
-
-    <div class="cv-viewer-toolbar">
-      <span class="cv-filename">Tableau_synthese_medhi.pdf</span>
-      <div class="cv-toolbar-actions">
-        <a class="cv-btn" href="ts_medhi.pdf" download="CV_Medhi_Rodrigues.pdf">Télécharger</a>
+    <div class="doc-wrapper">
+      <div class="doc-toolbar">
+        <span class="doc-filename">Tableau_synthese_medhi.pdf</span>
+        <a class="doc-btn" href="ts_medhi.pdf" download="Tableau_synthese_medhi.pdf">⬇ Télécharger</a>
       </div>
+      <iframe class="doc-embed" src="ts_medhi.pdf" title="Tableau de synthèse Medhi Rodrigues"></iframe>
     </div>
-    <iframe class="cv-embed" src="ts_medhi.pdf" title="TS Medhi Rodrigues"></iframe>
-
   </section>
 
   <!-- CONTACT -->
@@ -882,6 +986,7 @@ p:last-child { margin-bottom: 0; }
 </main>
 
 <script>
+  /* ---- Navigation active ---- */
   const sections = document.querySelectorAll('section[id]');
   const links = document.querySelectorAll('.nav-links a');
 
@@ -904,6 +1009,40 @@ p:last-child { margin-bottom: 0; }
   links.forEach(l => l.addEventListener('click', () => {
     document.getElementById('navLinks').classList.remove('open');
   }));
+
+  /* ---- Lightbox ---- */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  // Toutes les images avec data-lightbox
+  document.querySelectorAll('[data-lightbox]').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+
+  // Clic sur le fond ou le bouton ferme
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Fermer avec Échap
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>
 </body>
 </html>
